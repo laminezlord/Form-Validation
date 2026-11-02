@@ -3,116 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Form Validation</title>
+  <title>Create Account · Form Validation</title>
+  <meta name="description" content="A sign-up form with live, accessible validation: email checks, a password strength meter, matching passwords and clear error messages.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <main class="shell">
+    <section class="card" aria-labelledby="title">
+      <div class="card-head">
+        <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        <h1 id="title">Create your account</h1>
+        <p>It takes less than a minute. Fields are checked as you go.</p>
+      </div>
 
-<div class="container">
-  <div class="form-card">
-    <div class="header">
-      <div class="header-icon">
-        <!-- Shield icon -->
-        <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          <path d="M9 12l2 2 4-4"/>
-        </svg>
-      </div>
-      <h2>Create Account</h2>
-    </div>
-    
-    <form id="validationForm">
-      <!-- Name Field -->
-      <div class="form-group">
-        <label for="name">Full Name</label>
-        <div class="input-wrapper">
-          <input type="text" id="name" placeholder="Abiola Sikiru">
-          <!-- Check icon (green) - hidden by default -->
-          <svg class="status-icon valid-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-            <polyline points="22 4 12 14.01 9 11.01"/>
-          </svg>
-          <!-- X icon (red) - hidden by default -->
-          <svg class="status-icon invalid-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="15" y1="9" x2="9" y2="15"/>
-            <line x1="9" y1="9" x2="15" y2="15"/>
-          </svg>
+      <form id="form" novalidate>
+        <div class="field" data-field="name">
+          <label for="name">Full name</label>
+          <div class="control">
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Abiola Sikiru" aria-describedby="name-msg" required>
+            <span class="state" aria-hidden="true"></span>
+          </div>
+          <p class="msg" id="name-msg"></p>
         </div>
-        <div class="error-message" id="nameError">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="12" y1="8" x2="12" y2="12"/>
-            <line x1="12" y1="16" x2="12.01" y2="16"/>
-          </svg>
-          Name is required
-        </div>
-      </div>
-      
-      <!-- Email Field -->
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <div class="input-wrapper">
-          <input type="email" id="email" placeholder="abiola22@gmail.com">
-          <svg class="status-icon valid-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-            <polyline points="22 4 12 14.01 9 11.01"/>
-          </svg>
-          <svg class="status-icon invalid-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="15" y1="9" x2="9" y2="15"/>
-            <line x1="9" y1="9" x2="15" y2="15"/>
-          </svg>
-        </div>
-        <div class="error-message" id="emailError">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="12" y1="8" x2="12" y2="12"/>
-            <line x1="12" y1="16" x2="12.01" y2="16"/>
-          </svg>
-          Enter a valid email
-        </div>
-      </div>
-      
-      <!-- Password Field -->
-      <div class="form-group">
-        <label for="password">Password</label>
-        <div class="input-wrapper">
-          <input type="password" id="password" placeholder="••••••">
-          <svg class="status-icon valid-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-            <polyline points="22 4 12 14.01 9 11.01"/>
-          </svg>
-          <svg class="status-icon invalid-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="15" y1="9" x2="9" y2="15"/>
-            <line x1="9" y1="9" x2="15" y2="15"/>
-          </svg>
-        </div>
-        <div class="error-message" id="passwordError">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="12" y1="8" x2="12" y2="12"/>
-            <line x1="12" y1="16" x2="12.01" y2="16"/>
-          </svg>
-          Password must be at least 6 characters
-        </div>
-      </div>
-      
-      <button type="submit">Create Account</button>
-    </form>
-    
-    <div class="success-message" id="successMessage">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-        <polyline points="22 4 12 14.01 9 11.01"/>
-      </svg>
-      <div style="font-size: 18px; font-weight: 600; margin-top: 8px;">Success!</div>
-      <div style="font-size: 14px; opacity: 0.9;">Form submitted successfully</div>
-    </div>
-  </div>
-</div>
 
-<script src="script.js"></script>
+        <div class="field" data-field="email">
+          <label for="email">Email</label>
+          <div class="control">
+            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" aria-describedby="email-msg" required>
+            <span class="state" aria-hidden="true"></span>
+          </div>
+          <p class="msg" id="email-msg"></p>
+        </div>
+
+        <div class="field" data-field="password">
+          <label for="password">Password</label>
+          <div class="control">
+            <input id="password" name="password" type="password" autocomplete="new-password" aria-describedby="password-rules password-msg" required>
+            <button type="button" class="reveal" data-reveal="password" aria-label="Show password" aria-pressed="false">Show</button>
+          </div>
+          <div class="meter" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          <ul class="rules" id="password-rules" aria-label="Password requirements">
+            <li data-rule="length">At least 8 characters</li>
+            <li data-rule="case">Upper and lower case letters</li>
+            <li data-rule="number">A number</li>
+            <li data-rule="symbol">A symbol, like ! or #</li>
+          </ul>
+          <p class="msg" id="password-msg" aria-live="polite"></p>
+        </div>
+
+        <div class="field" data-field="confirm">
+          <label for="confirm">Confirm password</label>
+          <div class="control">
+            <input id="confirm" name="confirm" type="password" autocomplete="new-password" aria-describedby="confirm-msg" required>
+            <span class="state" aria-hidden="true"></span>
+          </div>
+          <p class="msg" id="confirm-msg"></p>
+        </div>
+
+        <div class="field check" data-field="terms">
+          <label class="box">
+            <input id="terms" name="terms" type="checkbox" aria-describedby="terms-msg">
+            <span>I agree to the terms of service and privacy policy</span>
+          </label>
+          <p class="msg" id="terms-msg"></p>
+        </div>
+
+        <p class="summary" id="summary" role="alert" hidden></p>
+
+        <button class="submit" type="submit">
+          <span class="label">Create account</span>
+          <span class="spin" aria-hidden="true"></span>
+        </button>
+      </form>
+
+      <div class="done" id="done" hidden tabindex="-1">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 10"/></svg>
+        <h2>You're all set</h2>
+        <p id="doneText"></p>
+        <button class="ghost" id="again" type="button">Start over</button>
+      </div>
+    </section>
+    <p class="foot">A front-end validation demo by Abiola. Nothing you type is sent anywhere.</p>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
